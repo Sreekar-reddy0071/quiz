@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: '#e86a33',
+              'brand-hover': '#cf5723',
+              'cream-bg': '#fdfbf7',
+              'cream-100': '#f3f0e6',
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+  <body class="bg-cream-bg min-h-screen flex items-center justify-center p-4 font-sans antialiased text-[#333]">
+    <div class="w-full max-w-[600px] bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] overflow-hidden relative border border-[#f0e8dc]">
+      
+      <!-- Start Screen (Visible initially via block) -->
+      <div id="start-screen" class="block p-6 sm:p-10 text-center">
+        <h1 class="text-brand text-3xl sm:text-4xl font-bold mb-4 leading-tight">Quiz Time!</h1>
+        <p class="text-[#666] text-base sm:text-lg mb-8">Test your knowledge with these fun questions</p>
+        <button
+          id="start-btn"
+          class="bg-brand hover:bg-brand-hover text-white rounded-xl px-8 py-3.5 text-base sm:text-lg font-medium cursor-pointer transition-all duration-200 shadow-sm hover:shadow active:scale-95"
+        >
+          Start Quiz
+        </button>
+      </div>
+
+      <!-- Quiz Screen (Hidden initially via hidden) -->
+      <div id="quiz-screen" class="hidden p-6 sm:p-10 text-center">
+        <div class="mb-6">
+          <h2 id="question-text" class="text-xl sm:text-2xl font-bold mb-4 leading-snug">
+            Question goes here
+          </h2>
+          <div class="flex justify-between text-sm sm:text-base text-[#666] font-medium mb-3">
+            <p>
+              Question <span id="current-question" class="text-brand font-bold">1</span> of <span id="total-questions">5</span>
+            </p>
+            <p>Score: <span id="score" class="text-brand font-bold">0</span></p>
+          </div>
+        </div>
+
+        <div id="answers-container" class="flex flex-col gap-3.5 mb-6"></div>
+
+        <!-- Progress Bar -->
+        <div class="h-2.5 w-full bg-[#f3f0e6] rounded-full overflow-hidden mt-6">
+          <div id="progress" class="h-full bg-brand w-0 transition-all duration-300 ease-out"></div>
+        </div>
+      </div>
+
+      <!-- Result Screen (Hidden initially via hidden) -->
+      <div id="result-screen" class="hidden p-6 sm:p-10 text-center">
+        <h1 class="text-brand text-3xl sm:text-4xl font-bold mb-6 leading-tight">Quiz Results</h1>
+        <div class="bg-cream-100 rounded-xl p-6 mb-8 border border-[#e8dfcf]">
+          <p class="text-lg text-[#333] mb-3">
+            You scored <span id="final-score" class="font-bold text-brand">0</span> out of <span id="max-score" class="font-bold">5</span>
+          </p>
+          <div id="result-message" class="text-2xl font-semibold text-brand">Good job!</div>
+        </div>
+        <button
+          id="restart-btn"
+          class="bg-brand hover:bg-brand-hover text-white rounded-xl px-8 py-3.5 text-base sm:text-lg font-medium cursor-pointer transition-all duration-200 shadow-sm hover:shadow active:scale-95"
+        >
+          Restart Quiz
+        </button>
+      </div>
+
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
